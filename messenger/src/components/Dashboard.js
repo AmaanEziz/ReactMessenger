@@ -1,14 +1,15 @@
 import React from 'react'
-import Sidebar from './Sidebar'
-import Conversations from './Conversations'
 
-import './SidebarStyles.css'
+import Sidebar from './Sidebar'
+
 function Dashboard({id}) {
     return (
-      <>
-          <Sidebar ID={id} style={{float:"left"}}/>
-          <Conversations style={{float:"right"}}/>
-        </>
+      <div >
+      <div ><Sidebar ID={id} className="w-25 border-right"/></div>
+     
+     
+      </div>
+  
     )
 }
 export default Dashboard;
