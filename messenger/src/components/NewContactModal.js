@@ -1,22 +1,24 @@
-import {React,useRef} from 'react'
+import {React,useRef,useContext} from 'react'
 import {Modal,Form,Button} from 'react-bootstrap'
 
-function NewContactModal({show,setShow,setIds}) {
+import {useContact} from './ContactProvider'
+function NewContactModal({show,setShow}) {
     const newContactID=useRef();
-   
+    const contacts=useContact();
     function handleHide(){
         setShow(false);
     }
-    function handleSubmit(){
-    if (newContactID.current.value!=""){
-     setIds(prevIds=>[...prevIds,newContactID.current.value])
-     setShow(false);
+    function HandleSubmit(){
+        if (newContactID.current.value!=""){
+        contacts.addContact(newContactID.current.value)
+     setShow(false);}
         }
      
-    }
+    
     
     return (
         <div>
+            
            <Modal show={show} onHide={handleHide}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create Contact</Modal.Title>
@@ -27,11 +29,11 @@ function NewContactModal({show,setShow,setIds}) {
                 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="Submit" onClick={handleSubmit}>Add New Contact</Button>
+                    <Button type="Submit" onClick={HandleSubmit}>Add New Contact</Button>
                 </Modal.Footer>
             </Modal>
         </div>
     )
 }
 
-export default NewContactModal
+export default NewContactModal;

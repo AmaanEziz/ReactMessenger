@@ -1,4 +1,4 @@
-.conversation{
+.list{
     font-size:20px;
     font-family:'Times New Roman';
    font-weight:200;
@@ -8,7 +8,7 @@
    border-bottom: 1px gray;
    word-wrap: break-word; 
 }
-.conversation:hover{
+.list:hover{
     background-color:#1E90FF;
     color:white;
 }
