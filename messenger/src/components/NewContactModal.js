@@ -1,4 +1,4 @@
-import {React,useRef,useContext} from 'react'
+import {React,useRef} from 'react'
 import {Modal,Form,Button} from 'react-bootstrap'
 
 import {useContact} from './ContactProvider'
@@ -9,7 +9,7 @@ function NewContactModal({show,setShow}) {
         setShow(false);
     }
     function HandleSubmit(){
-        if (newContactID.current.value!=""){
+        if (newContactID.current.value!==""){
         contacts.addContact(newContactID.current.value)
      setShow(false);}
         }

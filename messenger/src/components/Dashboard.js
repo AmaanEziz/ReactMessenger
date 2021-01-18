@@ -6,7 +6,7 @@ function Dashboard({id}) {
     return (
 
 <Sidebar ID={id} className="w-25 border-right"/>
-     
+
   
     )
 }

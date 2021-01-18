@@ -1,18 +1,20 @@
-import {React,useState,useContext} from 'react'
+import {React,useState} from 'react'
 import {Tab,Tabs,Button} from 'react-bootstrap'
 import {useContact} from './ContactProvider'
+import {useConversation} from './ConversationProvider'
 import NewContactModal from './NewContactModal'
+import NewConversationModal from './NewConversationModal'
 import './SidebarStyles.css'
 function Sidebar({ID}) {
 
     const [activeKey,setActiveKey]=useState("Conversations")
-    const [contactModal,setContactModal]=useState(false);
-    const [conversationModal,setConversationModal]=useState(false);
+    const [showModal,setShowModal]=useState(false);
     const contacts=useContact();
-    const [conversations,setConversations]=useState([]);
+    const conversations=useConversation();
+   
   
-    function handleNewClick(){
-        activeKey==="Conversations" ? setConversationModal(true) : setContactModal(true);
+    function handleClick(){
+       setShowModal(true)
     }
     
 
@@ -29,11 +31,11 @@ function Sidebar({ID}) {
   <div style={{height:'80vh', width:'auto'}}>
   
   {
-       conversations.map(arr=>(
+       conversations.conversationList.map(arr=>(
            <div  className="list">
            <div >
            {arr.map((val,index)=>(
-              (index!=arr.length-1) ? <span>{val}, </span> : <span>{val}</span>
+              (index!==arr.length-1) ? <span>{val}, </span> : <span>{val}</span>
            ))}
           
            </div>
@@ -60,10 +62,10 @@ function Sidebar({ID}) {
 <div className="border-right border-top" >
   Your ID: {ID}
 </div>
-<Button style={{padding:"0px", width:"100%"}} onClick={handleNewClick}>New {activeKey==="Conversations" ? "Conversation" : "Contact"}
+<Button style={{padding:"0px", width:"100%"}} onClick={handleClick}>New {activeKey==="Conversations" ? "Conversation" : "Contact"}
 </Button>
 </div>
-<NewContactModal show={contactModal} setShow={setContactModal}/>
+{activeKey==="Contacts" ? <NewContactModal show={showModal} setShow={setShowModal}/> : <NewConversationModal  show={showModal} setShow={setShowModal}/>}
 
 </div>
     )
