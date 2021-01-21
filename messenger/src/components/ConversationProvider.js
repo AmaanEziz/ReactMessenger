@@ -8,13 +8,17 @@ import useSessionStorage from '../CustomHook/useSessionStorage'
  }
 
 export default function ConversationProvider({children}){
-    const [conversationList,setConversationList]=useSessionStorage('conversationList',[]);
-    
-    function addConversation(value){
-       setConversationList(prev=> [...prev,value]);
+    const [conversationMap,setConversationMap]=new useSessionStorage('conversationMap',new Map())
+    const [selectedConv,setSelectedConv]=useSessionStorage('selectedConv',[])
+    function addToMap(arr){
+        conversationMap.set(arr,[])
     }
+    function addToConv(key,value){
+        conversationMap.set(key,[...conversationMap.get(key),value])
+    }
+
     return(
-        <ConversationContext.Provider value={{conversationList,addConversation}}>
+        <ConversationContext.Provider value={{conversationMap,selectedConv,setSelectedConv,addToMap,addToConv}}>
             {children}
         </ConversationContext.Provider>
     )

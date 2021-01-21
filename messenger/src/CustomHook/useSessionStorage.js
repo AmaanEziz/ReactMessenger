@@ -5,21 +5,18 @@ const PREFIX = 'messenger-'
 export default function useSessionStorage(key, initialValue) {
   const prefixedKey = PREFIX + key
   const [value, setValue] = useState(() => {
-    try{
-    if(sessionStorage.getItem(prefixedKey)){
-      return JSON.parse(sessionStorage.getItem(prefixedKey));
+    let storedValue=sessionStorage.getItem(prefixedKey);
+    if (storedValue){
+      return JSON.parse(storedValue)
     }
-    else{
-      return initialValue;
-    }}
-    catch(err){
-      return initialValue;
+    else {
+      return initialValue
     }
   })
 
   useEffect(() => {
 
-    sessionStorage.setItem(prefixedKey,value)
+    sessionStorage.setItem(prefixedKey,JSON.stringify(value))
   }, [value])
 
   return [value, setValue]

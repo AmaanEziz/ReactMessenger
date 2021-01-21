@@ -2,10 +2,11 @@ import {React,useState} from 'react'
 import {Modal,Form,Button} from 'react-bootstrap'
 import {useConversation} from './ConversationProvider'
 import {useContact} from './ContactProvider'
+import useSessionStorage from '../CustomHook/useSessionStorage'
 function NewContactModal({show,setShow}) {
     const contacts=useContact();
     const conversations=useConversation();
-    const [selectedIds,setSelectedIds]=useState([]);
+    const [selectedIds,setSelectedIds]=useSessionStorage('selectedIDs',[])
 
     function handleHide(){
         setShow(false);
@@ -22,9 +23,12 @@ function NewContactModal({show,setShow}) {
     }
 
     function handleSubmit(){
-        conversations.addConversation(selectedIds)
+        if(selectedIds.length>0){
+        conversations.addToMap(selectedIds)
         setSelectedIds([])
+        }
         setShow(false)
+
           
     }
     return (
@@ -45,7 +49,7 @@ function NewContactModal({show,setShow}) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="Submit" onClick={handleSubmit}>Add New Contact</Button>
+                    <Button type="Submit" onClick={handleSubmit}>Add New Conversation</Button>
                 </Modal.Footer>
             </Modal>
         </div>

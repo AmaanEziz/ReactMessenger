@@ -1,0 +1,15 @@
+.left{
+    width:25vw;
+    border-right:black 1px;
+}
+.right{
+    
+    position:absolute;
+    top:0px;
+    left:25vw;
+    margin-left:6px;
+}
+.convos{
+    height:80vh;
+    overflow:"scroll";
+}

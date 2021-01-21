@@ -1,6 +1,5 @@
 import {React,useRef} from 'react'
 import {Modal,Form,Button} from 'react-bootstrap'
-
 import {useContact} from './ContactProvider'
 function NewContactModal({show,setShow}) {
     const newContactID=useRef();
