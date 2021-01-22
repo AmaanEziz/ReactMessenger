@@ -1,5 +1,5 @@
 import React from 'react'
-import {useContext} from 'react'
+import {useContext,useState} from 'react'
 import useSessionStorage from '../CustomHook/useSessionStorage'
  export const ConversationContext=React.createContext();
 
@@ -10,6 +10,7 @@ import useSessionStorage from '../CustomHook/useSessionStorage'
 export default function ConversationProvider({children}){
     const [conversationMap,setConversationMap]=new useSessionStorage('conversationMap',new Map())
     const [selectedConv,setSelectedConv]=useSessionStorage('selectedConv',[])
+    const [messageAdded,setMessageAdded]=useState(false);
     function addToMap(arr){
         conversationMap.set(arr,[])
     }
@@ -18,7 +19,7 @@ export default function ConversationProvider({children}){
     }
 
     return(
-        <ConversationContext.Provider value={{conversationMap,selectedConv,setSelectedConv,addToMap,addToConv}}>
+        <ConversationContext.Provider value={{conversationMap,selectedConv,setSelectedConv,addToMap,addToConv,messageAdded,setMessageAdded}}>
             {children}
         </ConversationContext.Provider>
     )

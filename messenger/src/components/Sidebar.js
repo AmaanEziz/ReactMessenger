@@ -36,8 +36,7 @@ function Sidebar({ID}) {
 
 <div className="border-right w-auto">
 
-{console.log(conversations.conversationMap)}
-{console.log(conversations.selectedConv)}
+
 <Tabs defaultActiveKey={activeKey} onSelect={setActiveKey}>
 
   <Tab eventKey="Conversations" title="Conversations" >
