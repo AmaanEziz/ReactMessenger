@@ -1,4 +1,4 @@
-.message{
+.meMessage{
    
     background-color:blue;
     padding:5px;
@@ -9,4 +9,16 @@
     border-radius:15px;
     overflow-wrap: break-word;
     
+}
+.otherMessage{
+    background-color:blue;
+    padding:5px;
+    max-width:40%;
+    width:fit-content;
+    margin-top:8px;
+    color:white;
+    border-radius:15px;
+    overflow-wrap: break-word;
+    float:right;
+    direction:rtl;
 }

@@ -15,7 +15,7 @@ export default function useSessionStorage(key, initialValue) {
   })
 
   useEffect(() => {
-
+    
     sessionStorage.setItem(prefixedKey,JSON.stringify(value))
   }, [value])
 

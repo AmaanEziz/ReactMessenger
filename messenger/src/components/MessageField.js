@@ -10,8 +10,6 @@ export default function MessageField() {
   const conversation=useConversation()
     function handleSubmit(){
         conversation.addToConv(conversation.selectedConv,newMessage)
-        conversation.setMessageAdded(true);
-        conversation.setMessageAdded(false);
         setSent(prev=>prev+1)
     }
     return (
@@ -19,6 +17,7 @@ export default function MessageField() {
     <div style={{height:"80vh"}}>
      <Conversations  sent={sent}/>
      </div>
+    
      <div style={{height:"16vh"}}>
             <InputGroup style={{width:"73vw"}}>
                 <Form.Control value={newMessage} onChange={(e)=>{setNewMessage(e.target.value)}} as="textarea" rows={3} style={{resize:"none"}}/>

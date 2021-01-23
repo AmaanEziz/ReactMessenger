@@ -1,20 +1,32 @@
-import {React,useEffect} from 'react'
+import {React} from 'react'
+import {Button} from 'react-bootstrap'
 import '../cssStyles/ConversationStyles.css'
 import {useConversation} from './ConversationProvider'
 import ConversationProvider from './ConversationProvider'
 export default function Conversations({sent}) {
     const conversation=useConversation();
-    //this isnt rendering right after a message is sent
-
+    const keys=[...conversation.conversationMap.get(conversation.selectedConv).keys()]
+    function handleClick(e){
+        conversation.setSender(e.target.value)
+    }
     return (
     <ConversationProvider>
         <div>
-        <p style={{color:"gray",fontSize:"12px"}}>messages: {sent}</p>
+        
+
+        <span style={{color:"gray",fontSize:"12px"}}>
+        messages: {sent}
+        <span style={{marginLeft:"2vw",backgroundColor:"red"}}>
+        <Button variant="secondary" value="me" onClick={handleClick}>Me</Button>
+        <Button variant="secondary" value="other" onClick={handleClick}>Other Person</Button>
+        </span>
+        </span>
+       
      
            {
                
-               conversation.conversationMap.get(conversation.selectedConv).map(value=>(
-                   <div className="message" key={value}>{value}</div>
+               keys.map(value=>(
+                   <div className={conversation.conversationMap.get(conversation.selectedConv).get(value)=="me"? "meMessage" : "otherMessage"} key={value}>{value}</div>
                ))
            }
             

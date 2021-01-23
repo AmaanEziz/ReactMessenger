@@ -36,11 +36,11 @@ function Sidebar({ID}) {
 
 <div className="border-right w-auto">
 
-
+{console.log(conversations.conversationMap)}
 <Tabs defaultActiveKey={activeKey} onSelect={setActiveKey}>
 
   <Tab eventKey="Conversations" title="Conversations" >
-  <div style={{height:'80vh', width:'auto'}}>
+  <div style={{height:'80vh', width:'auto',overflow:'scroll'}}>
   
   {
     
