@@ -1,14 +1,18 @@
-import {React} from 'react'
+import {React,useState} from 'react'
 import {Button} from 'react-bootstrap'
 import '../cssStyles/ConversationStyles.css'
 import {useConversation} from './ConversationProvider'
 import ConversationProvider from './ConversationProvider'
+
 export default function Conversations({sent}) {
     const conversation=useConversation();
-   
+   const [selectedButton,setSelectedButton]=useState("primary")
+   const [unselectedButton,setUnselectedButton]=useState("secondary");
     function handleClick(e){
         conversation.setSender(e.target.value)
-        e.target.variant="primary"
+        let temp=selectedButton
+        setSelectedButton(unselectedButton)
+        setUnselectedButton(temp)
     }
     return (
     <ConversationProvider>
@@ -16,10 +20,10 @@ export default function Conversations({sent}) {
         
 
         <div style={{color:"gray",fontSize:"12px"}}>
-        messages: {sent}
+    
         <span style={{marginLeft:"2vw",backgroundColor:"red"}}>
-        <Button variant="secondary" value="isMe" onClick={handleClick}>Me</Button>
-        <Button variant="secondary" value="noMe" onClick={handleClick}>Other Person</Button>
+        <Button variant={selectedButton} value="isMe" onClick={handleClick}>Me</Button>
+        <Button variant={unselectedButton} value="noMe" onClick={handleClick}>Other Person</Button>
         </span>
   
         </div>

@@ -14,13 +14,14 @@ function Sidebar({ID}) {
     const keys=[...conversations.conversationMap.keys()]
 
     function handleConvClick(e,arr){
-      if (e.target.className=="list"){
-       e.target.className="selected"
+      if (e.target.className=="unselected"){
+      e.target.className="selected"
+      
      conversations.setSelectedConv(arr)
  
       }
       else{
-        e.target.className="list"
+        e.target.className="unselected"
        conversations.setSelectedConv([]);
       }
     }
@@ -46,7 +47,7 @@ function Sidebar({ID}) {
     
         keys.map((arr)=>(
 
-            <div key={arr} className="list" onClick={(e)=>{handleConvClick(e,arr)}}>
+            <div key={arr} className="unselected" onClick={(e)=>{handleConvClick(e,arr)}}>
             {arr.map((val,index)=>(
               
                 (index!==arr.length-1) ? <span key={val}>{val}, </span> : <span key={val}>{val}</span>
@@ -68,7 +69,7 @@ function Sidebar({ID}) {
     {
 
       contacts.contactList.map(value=>(
-        <div className="list" key={value}>{value}</div>
+        <div className="unselected" key={value}>{value}</div>
       ))
     }
     

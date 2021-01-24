@@ -3,10 +3,12 @@ import {useState} from 'react'
 import {InputGroup,Form,Button} from 'react-bootstrap'
 import Conversations from './Conversations'
 import {useConversation} from './ConversationProvider'
+import useSessionStorage from '../CustomHook/useSessionStorage'
+
 
 export default function MessageField() {
     const [newMessage,setNewMessage]=useState("");
-    const [sent,setSent]=useState(0);
+    const [sent,setSent]=useSessionStorage('messagesSent',0)
   const conversation=useConversation()
     function handleSubmit(){
         conversation.addToConv(conversation.selectedConv,newMessage)
