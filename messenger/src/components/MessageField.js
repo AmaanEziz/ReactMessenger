@@ -12,9 +12,10 @@ export default function MessageField() {
         conversation.addToConv(conversation.selectedConv,newMessage)
         setSent(prev=>prev+1)
     }
+  
     return (
     <>
-    <div style={{height:"80vh"}}>
+    <div style={{height:"80vh",overflowY:"scroll"}}>
      <Conversations  sent={sent}/>
      </div>
     

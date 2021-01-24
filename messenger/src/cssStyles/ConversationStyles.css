@@ -1,24 +1,27 @@
-.meMessage{
+.isMe{
    
     background-color:blue;
     padding:5px;
     max-width:40%;
     width:fit-content;
-    margin-top:8px;
+    
     color:white;
     border-radius:15px;
     overflow-wrap: break-word;
-    
+  
 }
-.otherMessage{
+.noMe{
     background-color:blue;
     padding:5px;
     max-width:40%;
     width:fit-content;
-    margin-top:8px;
+    margin-top:3px;
     color:white;
     border-radius:15px;
     overflow-wrap: break-word;
     float:right;
-    direction:rtl;
+    position:relative;
+    left:35vw;
+    margin-right:50%;
+   
 }

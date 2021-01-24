@@ -5,7 +5,7 @@ import {useConversation} from './ConversationProvider'
 import ConversationProvider from './ConversationProvider'
 export default function Conversations({sent}) {
     const conversation=useConversation();
-    const keys=[...conversation.conversationMap.get(conversation.selectedConv).keys()]
+   
     function handleClick(e){
         conversation.setSender(e.target.value)
     }
@@ -14,22 +14,25 @@ export default function Conversations({sent}) {
         <div>
         
 
-        <span style={{color:"gray",fontSize:"12px"}}>
+        <div style={{color:"gray",fontSize:"12px"}}>
         messages: {sent}
         <span style={{marginLeft:"2vw",backgroundColor:"red"}}>
-        <Button variant="secondary" value="me" onClick={handleClick}>Me</Button>
-        <Button variant="secondary" value="other" onClick={handleClick}>Other Person</Button>
+        <Button variant="secondary" value="isMe" onClick={handleClick}>Me</Button>
+        <Button variant="secondary" value="noMe" onClick={handleClick}>Other Person</Button>
         </span>
-        </span>
+  
+        </div>
        
-     
+        <div>
            {
                
-               keys.map(value=>(
-                   <div className={conversation.conversationMap.get(conversation.selectedConv).get(value)=="me"? "meMessage" : "otherMessage"} key={value}>{value}</div>
+               conversation.conversationMap.get(conversation.selectedConv).map(value=>(
+          
+                   <div className={(value.startsWith("isMe"))==true ? "isMe" : "noMe"}>{String(value).slice(4,value.length)}</div>
+                   
                ))
            }
-            
+        </div>
         </div>
         </ConversationProvider>
     )

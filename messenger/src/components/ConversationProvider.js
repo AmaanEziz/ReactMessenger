@@ -11,17 +11,18 @@ export default function ConversationProvider({children}){
     const [conversationMap,setConversationMap]=new useState(new Map())
     const [selectedConv,setSelectedConv]=useSessionStorage('selectedConv',[])
     const [messageAdded,setMessageAdded]=useState(false);
-    const [meUser,setMeUser]=useState(true)
-    const [sender,setSender]=useState("me")
+    
+    const [sender,setSender]=useState("isMe")
     function addToMap(arr){
-        conversationMap.set(arr,new Map())
+        conversationMap.set(arr,[])
     }
     function addToConv(key,value){
-        conversationMap.set(key,conversationMap.get(key).set(value,sender))
+        let prefixedValue=String(sender).concat(String(value))
+        conversationMap.set(key,[...conversationMap.get(key),String(prefixedValue)])
     }
     const returnObject={
         conversationMap,selectedConv,setSelectedConv,
-        addToMap,addToConv,meUser,setMeUser,messageAdded,
+        addToMap,addToConv,messageAdded,
         setMessageAdded,sender,setSender
     }
 
