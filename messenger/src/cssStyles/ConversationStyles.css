@@ -4,11 +4,12 @@
     padding:5px;
     max-width:40%;
     width:fit-content;
-    
+    margin-top:3px;
     color:white;
     border-radius:15px;
     overflow-wrap: break-word;
-  
+    float:left;
+    margin-right:50%;
 }
 .noMe{
     background-color:blue;

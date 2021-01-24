@@ -8,6 +8,7 @@ export default function Conversations({sent}) {
    
     function handleClick(e){
         conversation.setSender(e.target.value)
+        e.target.variant="primary"
     }
     return (
     <ConversationProvider>
