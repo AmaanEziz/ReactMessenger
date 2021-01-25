@@ -15,4 +15,4 @@ how to efficiently use the useState, useEffect, useRef, and useContext hooks.
 PHOTOS:
 
 LoginPage:
-<img src="../Photos/Login.png">
+<img src="./Photos/Login.png">
