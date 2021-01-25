@@ -8,7 +8,7 @@ import useLocalStorage from '../CustomHook/useLocalStorage'
  }
 
 export default function ConversationProvider({children}){
-    const [conversationMap,setConversationMap]=new useState(new Map())
+    const [conversationMap,setConversationMap]=new useLocalStorage('conversationMap',new Map())
     const [selectedConv,setSelectedConv]=useLocalStorage('selectedConv',[])
     const [messageAdded,setMessageAdded]=useState(false);
     

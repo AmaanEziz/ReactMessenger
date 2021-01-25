@@ -33,9 +33,10 @@ export default function Conversations({sent}) {
                
                conversation.conversationMap.get(conversation.selectedConv).map(value=>(
           
-                   <div className={(value.startsWith("isMe"))==true ? "isMe" : "noMe"}>{String(value).slice(4,value.length)}</div>
+                   <div className={(value.startsWith("isMe"))==true ?
+                   "isMe" : "noMe"}>{String(value).slice(4,value.length)}</div>
                    
-               ))
+               )) 
            }
         </div>
         </div>
