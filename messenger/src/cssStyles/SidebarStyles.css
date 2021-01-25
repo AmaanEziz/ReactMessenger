@@ -28,4 +28,17 @@
    word-wrap: break-word; 
 }
 
+.deleteButton{
+    float:right;
+ 
+   
+    padding-left:10px;
+    height:35px;
+    position:relative;
+    bottom:3px;
+}
+.deleteButton:hover{
+ 
+}
+
 

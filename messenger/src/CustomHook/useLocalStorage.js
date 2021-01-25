@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const PREFIX = 'messenger-'
 
-export default function useSessionStorage(key, initialValue) {
+export default function useLocalStorage(key, initialValue) {
   const prefixedKey = PREFIX + key
   const [value, setValue] = useState(() => {
     let storedValue=sessionStorage.getItem(prefixedKey);
@@ -15,7 +15,7 @@ export default function useSessionStorage(key, initialValue) {
   })
 
   useEffect(() => {
-    
+
     sessionStorage.setItem(prefixedKey,JSON.stringify(value))
   }, [value])
 

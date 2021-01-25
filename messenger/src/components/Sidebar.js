@@ -9,6 +9,7 @@ function Sidebar({ID}) {
 
     const [activeKey,setActiveKey]=useState("Conversations")
     const [showModal,setShowModal]=useState(false);
+  
     const contacts=useContact();
     const conversations=useConversation();
     const keys=[...conversations.conversationMap.keys()]
@@ -25,19 +26,28 @@ function Sidebar({ID}) {
        conversations.setSelectedConv([]);
       }
     }
-    function handleAddClick(){
+    function handleNewClick(){
        setShowModal(true)
     }
     
+    function handleDeleteContact(value){
 
+      contacts.setContactList(prev=> prev.filter(contact=>
+        {return contact!=value}
+      ))
+    }
+
+    function handleDeleteConversation(value){
+
+      conversations.conversationMap.delete(value)
+    }
    
     return (
 
 <div className="w-25">
-
+{console.log(contacts.contactList)}
 <div className="border-right w-auto">
 
-{console.log(conversations.conversationMap)}
 <Tabs defaultActiveKey={activeKey} onSelect={setActiveKey}>
 
   <Tab eventKey="Conversations" title="Conversations" >
@@ -49,11 +59,12 @@ function Sidebar({ID}) {
 
             <div key={arr} className="unselected" onClick={(e)=>{handleConvClick(e,arr)}}>
             {arr.map((val,index)=>(
-              
-                (index!==arr.length-1) ? <span key={val}>{val}, </span> : <span key={val}>{val}</span>
-        
+              <span>
+               { (index!==arr.length-1) ? <span key={val}>{val}, </span> : <span key={val}>{val}</span>}
+                
+                </span>
             ))}
-           
+           <Button className="deleteButton" onClick={()=>handleDeleteConversation(arr)}>X</Button>
            </div>
            
        ))
@@ -66,10 +77,15 @@ function Sidebar({ID}) {
   </Tab>
   <Tab eventKey="Contacts" title="Contacts">
   <div style={{height:'80vh', width:'auto'}}>
+  {console.log(conversations.conversationMap)}
     {
 
       contacts.contactList.map(value=>(
-        <div className="unselected" key={value}>{value}</div>
+        <>
+        <div className="unselected" key={value}>{value}
+        <span><Button className="deleteButton" onClick={()=>handleDeleteContact(value)}>X</Button></span>
+        </div>
+        </>
       ))
     }
     
@@ -81,7 +97,7 @@ function Sidebar({ID}) {
 <div className="border-right border-top" >
   Your ID: {ID}
 </div>
-<Button style={{padding:"0px", width:"100%"}} onClick={handleAddClick}>New {activeKey==="Conversations" ? "Conversation" : "Contact"}
+<Button style={{padding:"0px", width:"100%"}} onClick={handleNewClick}>New {activeKey==="Conversations" ? "Conversation" : "Contact"}
 </Button>
 </div>
 {activeKey==="Contacts" ? <NewContactModal show={showModal} setShow={setShowModal}/> : <NewConversationModal  show={showModal} setShow={setShowModal}/>}

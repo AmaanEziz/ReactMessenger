@@ -1,6 +1,6 @@
 import React from 'react'
 import {useContext,useState} from 'react'
-import useSessionStorage from '../CustomHook/useSessionStorage'
+import useLocalStorage from '../CustomHook/useLocalStorage'
  export const ConversationContext=React.createContext();
 
  export function useConversation(){
@@ -9,7 +9,7 @@ import useSessionStorage from '../CustomHook/useSessionStorage'
 
 export default function ConversationProvider({children}){
     const [conversationMap,setConversationMap]=new useState(new Map())
-    const [selectedConv,setSelectedConv]=useSessionStorage('selectedConv',[])
+    const [selectedConv,setSelectedConv]=useLocalStorage('selectedConv',[])
     const [messageAdded,setMessageAdded]=useState(false);
     
     const [sender,setSender]=useState("isMe")
@@ -23,7 +23,8 @@ export default function ConversationProvider({children}){
     const returnObject={
         conversationMap,selectedConv,setSelectedConv,
         addToMap,addToConv,messageAdded,
-        setMessageAdded,sender,setSender
+        setMessageAdded,sender,setSender,
+        setConversationMap
     }
 
     return(

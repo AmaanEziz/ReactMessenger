@@ -3,18 +3,23 @@ import {useState} from 'react'
 import {InputGroup,Form,Button} from 'react-bootstrap'
 import Conversations from './Conversations'
 import {useConversation} from './ConversationProvider'
-import useSessionStorage from '../CustomHook/useSessionStorage'
-
+import useLocalStorage from '../CustomHook/useLocalStorage'
 
 export default function MessageField() {
     const [newMessage,setNewMessage]=useState("");
-    const [sent,setSent]=useSessionStorage('messagesSent',0)
+    const [sent,setSent]=useLocalStorage('messagesSent',0)
   const conversation=useConversation()
+
+
     function handleSubmit(){
         conversation.addToConv(conversation.selectedConv,newMessage)
         setSent(prev=>prev+1)
     }
   
+    const onEmojiClick = (event, emojiObject) => {
+        setNewMessage(prev=>[...prev,emojiObject])
+        console.log(emojiObject)
+      };
     return (
     <>
     <div style={{height:"80vh",overflowY:"scroll"}}>

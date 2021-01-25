@@ -2,11 +2,11 @@ import {React,useState} from 'react'
 import {Modal,Form,Button} from 'react-bootstrap'
 import {useConversation} from './ConversationProvider'
 import {useContact} from './ContactProvider'
-import useSessionStorage from '../CustomHook/useSessionStorage'
+import useLocalStorage from '../CustomHook/useLocalStorage'
 function NewContactModal({show,setShow}) {
     const contacts=useContact();
     const conversations=useConversation();
-    const [selectedIds,setSelectedIds]=useSessionStorage('selectedIDs',[])
+    const [selectedIds,setSelectedIds]=useLocalStorage('selectedIDs',[])
 
     function handleHide(){
         setShow(false);

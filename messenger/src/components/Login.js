@@ -19,7 +19,7 @@ import {v4 as uuidV4} from 'uuid'
             <Form className="w-100" onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Login</Form.Label>
-                    <Form.Control type="text" ref={loginRef}></Form.Control>
+                    <Form.Control type="text" ref={loginRef} style={{width:"50vw"}}></Form.Control>
                     
                 </Form.Group>
                 <Button variant="primary" type="submit" className="mr-2" onClick={handleSubmit}>Submit</Button>
