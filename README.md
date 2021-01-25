@@ -11,3 +11,8 @@ This app also uses a custom hook to store information in local storage.
 
 I used this app to help build my knowledge of react and react bootstrap and learned
 how to efficiently use the useState, useEffect, useRef, and useContext hooks.
+
+PHOTOS:
+
+LoginPage:
+<img src="C:\Users\amaan\Pictures\loginPage.png">
