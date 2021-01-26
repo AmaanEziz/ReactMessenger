@@ -15,4 +15,20 @@ how to efficiently use the useState, useEffect, useRef, and useContext hooks.
 PHOTOS:
 
 LoginPage:
-<img src="./Photos/Login.png">
+<img src="./Photos/loginPage.png">
+<br/>
+Create New Contact Modal:
+<img src="./Photos/CreateNewContact.png">
+<br/>
+Added Contacts:
+<img src="./Photos/AddedContacts.png">
+<br/>
+Create New Conversation Modal:
+<img src="./Photos/CreateNewConversation.png">
+<br/>
+Added Conversations:
+<img src="./Photos/AddedConversatons.png">
+<br/>
+Entire Dashboard with Active Messages:
+<img src="./Photos/EntireDashboard.png">
+

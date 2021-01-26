@@ -14,6 +14,7 @@ export default function MessageField() {
     function handleSubmit(){
         conversation.addToConv(conversation.selectedConv,newMessage)
         setSent(prev=>prev+1)
+        setNewMessage("")
     }
   
     const onEmojiClick = (event, emojiObject) => {
