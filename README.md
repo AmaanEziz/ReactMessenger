@@ -16,18 +16,18 @@ PHOTOS:
 
 LoginPage:
 <img src="./Photos/loginPage.PNG">
-<br/>
+<br>
 Create New Contact Modal:
 <img src="Photos/CreateNewContact.PNG">
-<br/>
+<br>
 Added Contacts:
 <img src="Photos/AddedContacts.PNG">
-<br/>
+<br>
 Create New Conversation Modal:
 <img src="Photos/CreateNewConversation.PNG">
-<br/>
+<br>
 Added Conversations:
-<img src="Photos/AddedConversatons.PNG">
+<img src="Photos/AddedConversations.PNG">
 <br/>
 Entire Dashboard with Active Messages:
 <img src="Photos/EntireDashboard.PNG">
